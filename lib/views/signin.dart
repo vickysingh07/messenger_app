@@ -14,6 +14,13 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         title: const Text('Messenger'),
       ),
+      // ignore: avoid_unnecessary_containers
+      body: Center(
+        // ignore: avoid_unnecessary_containers
+        child: Container(
+          child: const Text("Sign In with Google"),
+        ),
+      ),
     );
   }
 }
