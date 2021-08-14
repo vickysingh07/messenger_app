@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:messenger_app/services/auth.dart';
+import 'package:messenger_app/views/home.dart';
 import 'package:messenger_app/views/signin.dart';
 import 'package:flutter/widgets.dart';
 
@@ -20,7 +22,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SignIn(),
+      home: FutureBuilder(
+        future: AuthMethods().getCurrentUser(),
+        builder: (context, AsyncSnapshot<dynamic> snapshot){
+          if(snapshot.hasData){
+            return const Home();
+          }else {
+            return const SignIn();
+          }
+        },
+      ),
     );
   }
 }
