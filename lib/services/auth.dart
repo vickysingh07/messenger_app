@@ -4,12 +4,13 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:messenger_app/helperfunction/shared_preference.dart';
 import 'package:messenger_app/services/database.dart';
 import 'package:messenger_app/views/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthMethods {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  getCurrentUser() {
-    return auth.currentUser;
+  getCurrentUser() async{
+    return await auth.currentUser;
   }
 
   signInWithGoogle(BuildContext context) async {
@@ -52,5 +53,11 @@ class AuthMethods {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => const Home()));
     });
+  }
+
+  Future signOut() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+    await auth.signOut();
   }
 }
