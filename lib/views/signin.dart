@@ -25,9 +25,9 @@ class _SignInState extends State<SignIn> {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24),
-              color: Color(0xffDB4437),
+              color: const Color(0xffDB4437),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: const Text("Sign In with Google", style: TextStyle(
               fontSize: 16,
               color: Colors.white

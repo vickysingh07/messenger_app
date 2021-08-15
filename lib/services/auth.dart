@@ -10,7 +10,7 @@ class AuthMethods {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   getCurrentUser() async{
-    return await auth.currentUser;
+    return auth.currentUser;
   }
 
   signInWithGoogle(BuildContext context) async {
@@ -51,7 +51,7 @@ class AuthMethods {
         .addUserInfoToDB(userDetails.uid, userInfoMap)
         .then((value) {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const Home()));
+          context, MaterialPageRoute(builder: (context) => Home()));
     });
   }
 
